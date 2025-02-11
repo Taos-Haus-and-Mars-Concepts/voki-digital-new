@@ -1,6 +1,10 @@
 html, body {
   height: 100%;
-  background-color: var(--silver);
+  /* background-color: var(--silver); */
+  /* background-color: #1a0033;
+  background-image: url(http://www.transparenttextures.com/patterns/subtle-grey.png); */
+  background-color: #1a0033;
+  background-image: url(http://www.transparenttextures.com/patterns/checkered-light-emboss.png);
   margin: 0;
   padding: 0;
 }
@@ -23,7 +27,7 @@ h3, h4, h5, h6 {
   font-weight: 300;
 }
 
-body {
+body, p {
   font-family: 'JetBrains', monospace;
   font-weight: 300;
 }
@@ -56,9 +60,9 @@ a:hover {
   color: var(--silver);
 }
 
-i {
+/* i {
   color: var(--cyan);
-}
+} */
 
 /*--------------------------------------------------------------
 # Fonts
@@ -636,6 +640,11 @@ section {
 /*--------------------------------------------------------------
 # About
 --------------------------------------------------------------*/
+.about-container {
+  background-color: var(--silver);
+  border-radius: 10px;
+}
+
 .about .content h3 {
   font-weight: 700;
   font-size: 28px;
@@ -737,6 +746,13 @@ section {
 /*--------------------------------------------------------------
 # Services
 --------------------------------------------------------------*/
+.services-container {
+  background-color: var(--silver);
+  padding: 30px;
+  border-radius: 10px;
+}
+
+/* Service Cards */
 .services .icon-box {
   text-align: center;
   border: 1px solid #ebebeb;
@@ -789,8 +805,92 @@ section {
   border-color: #fff;
   box-shadow: 0px 0 25px 0 rgba(0, 0, 0, 0.1);
   transform: translateY(-10px);
-  background: rgb(237,7,7);
-background: linear-gradient(4deg, rgba(237,7,7,.1) 13%, rgba(29,30,16,.1) 46%, rgba(125,29,160,.1) 75%);
+  background: rgb(237, 7, 7);
+  background: linear-gradient(4deg, rgba(237, 7, 7, 0.1) 13%, rgba(29, 30, 16, 0.1) 46%, rgba(125, 29, 160, 0.1) 75%);
+}
+
+/*--------------------------------------------------------------
+# Flip Card Functionality
+--------------------------------------------------------------*/
+
+/* Flip Card Container */
+.flip-card {
+  background-color: transparent;
+  width: 100%;
+  height: 300px; /* Adjust height if needed */
+  perspective: 1000px; /* Enables 3D effect */
+}
+
+/* Inner Flip Mechanism */
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+}
+
+/* Flip on Hover */
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Front and Back Card Styling */
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+}
+
+/* Front Side */
+.flip-card-front {
+  background: #fff;
+  color: black;
+  border: 1px solid #ddd;
+}
+
+/* Back Side */
+.flip-card-back {
+  background: #4b0082; /* Dark violet */
+  color: white;
+  transform: rotateY(180deg);
+  border: 1px solid #ddd;
+}
+
+/* Flip Card Text */
+.flip-card-front h4,
+.flip-card-back p {
+  text-align: center;
+  margin: 10px;
+}
+
+.flip-card-front .icon {
+  font-size: 50px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .flip-card {
+    height: 250px; /* Adjust height for smaller screens */
+  }
+
+  .flip-card-front h4 {
+    font-size: 20px;
+  }
+
+  .flip-card-back p {
+    font-size: 14px;
+    padding: 10px;
+  }
 }
 
 /*--------------------------------------------------------------
