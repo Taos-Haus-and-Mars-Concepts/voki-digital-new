@@ -1,10 +1,6 @@
 
 body {
  font-family: 'Futura PT', sans-serif;
-
-
-
-
 }
 
 i {
@@ -14,6 +10,11 @@ color: rgba(192, 192, 192, 0.5);
 nav {
 
 }
+
+h1 {
+  color: blue !important;
+}
+
 a {
   color: #382c13;
   text-decoration: none;
