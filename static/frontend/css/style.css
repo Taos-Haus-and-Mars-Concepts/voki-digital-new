@@ -501,10 +501,6 @@ i {
   color: #fff;
 }
 
-#hero h1 span {
-  color: #ffc451;
-}
-
 #hero h2 {
   font-family: 'JetBrains', monospace;
   color: rgba(255, 255, 255, 0.9);
@@ -531,10 +527,11 @@ i {
 #hero .icon-box i {
   font-size: 32px;
   line-height: 2;
-  /* color: var(--silver); */
-  background-color: var(--cyan);
+  color: var(--silver);
+  /* background-color: var(--cyan); */
   padding: 10px;
   border-radius: 100px;
+  transition: ease-in-out 0.3s;
 }
 
 #hero .icon-box h3 {
@@ -550,9 +547,20 @@ i {
   transition: ease-in-out 0.3s;
 }
 
+#hero .icon-box:hover i {
+  font-size: 32px;
+  line-height: 2;
+  color: var(--cyan);
+  /* background-color: var(--cyan); */
+  padding: 10px;
+  border-radius: 100px;
+}
+
 #hero .icon-box:hover h3{
   color: var(--cyan);
 }
+
+
 
 #hero .icon-box:hover {
   /* border-color: #ffc451; */
