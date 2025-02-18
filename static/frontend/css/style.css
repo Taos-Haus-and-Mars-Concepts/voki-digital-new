@@ -5,6 +5,8 @@ html, body {
   background-image: url(http://www.transparenttextures.com/patterns/subtle-grey.png); */
   background-color: #1a0033;
   background-image: url(http://www.transparenttextures.com/patterns/checkered-light-emboss.png);
+  /* background-image: url('../img/bg-hero/blurry-gradient-haikei.png'); */
+  /* background-size: cover; */
   margin: 0;
   padding: 0;
 }
