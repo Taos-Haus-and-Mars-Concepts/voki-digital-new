@@ -3,10 +3,10 @@ html, body {
   /* background-color: var(--silver); */
   /* background-color: #1a0033;
   background-image: url(http://www.transparenttextures.com/patterns/subtle-grey.png); */
-  background-color: #1a0033;
-  background-image: url(http://www.transparenttextures.com/patterns/checkered-light-emboss.png);
-  /* background-image: url('../img/bg-hero/blurry-gradient-haikei.png'); */
-  /* background-size: cover; */
+  /* background-color: #1a0033;
+  background-image: url(http://www.transparenttextures.com/patterns/checkered-light-emboss.png); */
+  /* background-image: url('../img/bg-hero/blurry-gradient-haikei.png');
+  background-size: cover; */
   margin: 0;
   padding: 0;
 }
@@ -569,11 +569,9 @@ a:hover {
 
 
 #hero .icon-box:hover {
-  /* border-color: #ffc451; */
   border: 1px solid rgba(255, 255, 255, 0.3);
   background-color: #4b0082;
   background-image: url("https://www.transparenttextures.com/patterns/dotnoise-light-grey.png");
-  /* background: linear-gradient(4deg, rgba(237,7,7,1) 13%, rgba(29,30,16,1) 46%, rgba(125,29,160,1) 75%); */
 }
 
 @media (min-width: 1024px) {
@@ -834,6 +832,11 @@ section {
 
 /* Flip on Hover */
 .flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Flip programmatically when the "flipped" class is added */
+.flip-card.flipped .flip-card-inner {
   transform: rotateY(180deg);
 }
 
@@ -1954,4 +1957,11 @@ background: linear-gradient(4deg, rgba(237,7,7,1) 13%, rgba(29,30,16,1) 46%, rgb
 
 #navbar-brand {font-size:1rem;
 background-color: rgba(48, 25, 52, 0.1); /* Dark purple with 90% opacity */}
+}
+
+.about-services-bg {
+  background-image: url('../img/bg-hero/blurry-gradient-haikei.png');
+  background-position: 100%;
+  background-size: cover;
+  background-repeat: repeat;
 }
