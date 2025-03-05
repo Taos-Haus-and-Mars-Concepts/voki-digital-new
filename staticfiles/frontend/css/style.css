@@ -1,35 +1,101 @@
+html, body {
+  height: 100%;
+  /* background-color: var(--silver); */
+  /* background-color: #1a0033;
+  background-image: url(http://www.transparenttextures.com/patterns/subtle-grey.png); */
+  /* background-color: #1a0033;
+  background-image: url(http://www.transparenttextures.com/patterns/checkered-light-emboss.png); */
+  /* background-image: url('../img/bg-hero/blurry-gradient-haikei.png');
+  background-size: cover; */
+  margin: 0;
+  padding: 0;
+}
 
-body {
- font-family: 'Futura PT', sans-serif;
-
-
-
+:root {
+  --indigo: #4b0082;
+  --silver: #c0c0c0;
+  --gold: #ffd584;
+  --cyan: #00ffff;
 
 }
 
-i {
-color: rgba(192, 192, 192, 0.5);
+h1, h2 {
+  font-family: 'Futura', sans-serif;
+  font-weight: 500;
 }
 
-nav {
+h3, h4, h5, h6 {
+  font-family: 'Futura', sans-serif;
+  font-weight: 300;
+}
+
+body, p, a {
+  font-family: 'JetBrains', monospace;
+  font-weight: 300;
+}
+
+strong, b {
+  font-family: 'JetBrains', monospace;
+  font-weight: 500;
+}
+
+h3 {
+  color: var(--silver);
 
 }
+
 a {
   color: #382c13;
   text-decoration: none;
 }
 
 a:hover {
-  color: #ffd584;
+  color: var(--cyan);;
   text-decoration: none;
 }
 
 .new-font-color {
-color: rgba(192, 192, 192, 0.5);
+  color: var(--silver);
   }
 
 .email, .phone, .address {
-color: #C0C0C0 !important;
+  color: var(--silver);
+}
+
+/* i {
+  color: var(--cyan);
+} */
+
+/*--------------------------------------------------------------
+# Fonts
+--------------------------------------------------------------*/
+
+@font-face {
+  font-family: 'Futura';
+  src: url('frontend/static/frontend/fonts/FuturaStd-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Futura';
+  src: url('frontend/static/frontend/fonts/FuturaStd-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'JetBrains';
+  src: url('frontend/static/frontend/fonts/JetBrainsMono-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'JetBrains';
+  src: url('frontend/static/frontend/fonts/JetBrainsMono-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
 }
 
 /*--------------------------------------------------------------
@@ -42,7 +108,7 @@ color: #C0C0C0 !important;
   right: 15px;
   bottom: 15px;
   z-index: 996;
-  background: rgba(192, 192, 192, 0.1);
+  background: #ffc451;
   width: 40px;
   height: 40px;
   border-radius: 4px;
@@ -51,7 +117,7 @@ color: #C0C0C0 !important;
 
 .back-to-top i {
   font-size: 28px;
-  color:  #6A0DAD;
+  color: #151515;
   line-height: 0;
 }
 
@@ -60,7 +126,7 @@ color: #C0C0C0 !important;
 }
 
 .back-to-top:hover i {
-  color: rgba(192, 192, 192, 0.5);
+  color: #ffc451;
 }
 
 .back-to-top.active {
@@ -152,7 +218,7 @@ color: #C0C0C0 !important;
 }
 
 /*--------------------------------------------------------------
-#  Get Startet Button
+#  Get Started Button
 --------------------------------------------------------------*/
 .get-started-btn {
   color: #fff;
@@ -181,7 +247,7 @@ color: #C0C0C0 !important;
 # Navigation Menu
 --------------------------------------------------------------*/
 /**
-* Desktop Navigation
+* Desktop Navigation 
 */
 .navbar {
   padding: 0;
@@ -294,7 +360,7 @@ color: #C0C0C0 !important;
 }
 
 /**
-* Mobile Navigation
+* Mobile Navigation 
 */
 .mobile-nav-toggle {
   color: #fff;
@@ -344,7 +410,7 @@ color: #C0C0C0 !important;
   transition: 0.3s;
 }
 
-.navbar-mobile a,
+.navbar-mobile a, 
 .navbar-mobile a:focus {
   padding: 10px 20px;
   font-size: 15px;
@@ -401,32 +467,13 @@ color: #C0C0C0 !important;
 /*--------------------------------------------------------------
 # Hero Section
 --------------------------------------------------------------*/
-body {
+#hero {
   width: 100%;
   height: 100%;
-  background: url("../img/bg-hero/voki-hero.jpg") top center;
+  background: url("../img/bg-hero/hero-motherboard-dark.jpg") top center;
   background-size: cover;
-  background-attachment: fixed; /* Keeps the background fixed */
   position: relative;
 }
-
-body::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8));
-  /* Adjust opacity and gradient direction as needed */
-  z-index: -1;
-}
-
-body * {
-  position: relative;
-  z-index: 2;
-}
-
 
 .hero_ecom {
   width: 100%;
@@ -436,7 +483,15 @@ body * {
   position: relative;
 }
 
-
+#hero:before {
+  content: "";
+  background: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+}
 
 #hero .container {
   position: relative;
@@ -450,18 +505,17 @@ body * {
   font-weight: 700;
   line-height: 64px;
   color: #fff;
-  
-                                                
-}
-
-#hero h1 span {
-  color: #ffc451;
 }
 
 #hero h2 {
+  font-family: 'JetBrains', monospace;
   color: rgba(255, 255, 255, 0.9);
   margin: 10px 0 0 0;
-  font-size: 24px;
+  font-size: 22px;
+}
+
+.hero-subtitle {
+  margin-top: 30px;
 }
 
 #hero .icon-box {
@@ -470,41 +524,59 @@ body * {
   border: 1px solid rgba(255, 255, 255, 0.3);
   height: 100%;
   text-align: center;
+  background-color: rgba(75, 0, 130, 0.1);
+  /* background-image: url(http://www.transparenttextures.com/patterns/bo-play.png); */
+  /* background-image: url("https://www.transparenttextures.com/patterns/carbon-fibre.png"); */
+  background-image: url(http://www.transparenttextures.com/patterns/dotnoise-light-grey.png);
 }
 
 #hero .icon-box i {
   font-size: 32px;
-  line-height: 1;
-  color: rgba(75, 0, 130, 0.5);
+  line-height: 2;
+  color: var(--silver);
+  /* background-color: var(--cyan); */
+  padding: 10px;
+  border-radius: 100px;
+  transition: ease-in-out 0.3s;
 }
 
 #hero .icon-box h3 {
-  font-weight: 700;
+  font-family: 'JetBrains', monospace;
   margin: 10px 0 0 0;
   padding: 0;
   line-height: 1;
   font-size: 20px;
-  line-height: 26px;
 }
 
-#hero .icon-box h3 a {
+#hero .icon-box h3 {
   color: #fff;
   transition: ease-in-out 0.3s;
 }
 
-#hero .icon-box h3 a:hover {
-  color: #ffc451;
+#hero .icon-box:hover i {
+  font-size: 32px;
+  line-height: 2;
+  color: var(--cyan);
+  /* background-color: var(--cyan); */
+  padding: 10px;
+  border-radius: 100px;
 }
 
-#hero .icon-box:hover {
-  border-color: #6A0DAD;
+#hero .icon-box:hover h3{
+  color: var(--cyan);
+}
 
+
+
+#hero .icon-box:hover {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background-color: #4b0082;
+  background-image: url("https://www.transparenttextures.com/patterns/dotnoise-light-grey.png");
 }
 
 @media (min-width: 1024px) {
   #hero {
     background-attachment: fixed;
-    height: 100%;
   }
 }
 
@@ -545,8 +617,6 @@ section {
   letter-spacing: 2px;
   text-transform: uppercase;
   color: #aaaaaa;
-  
-                                                
 }
 
 .section-title h2::after {
@@ -564,19 +634,20 @@ section {
   font-size: 36px;
   font-weight: 700;
   text-transform: uppercase;
-  
-                                                
-  color: rgba(255,255,255,.9);
+  color: #151515;
 }
 
 /*--------------------------------------------------------------
 # About
 --------------------------------------------------------------*/
+.about-container {
+  background-color: var(--silver);
+  border-radius: 10px;
+}
+
 .about .content h3 {
   font-weight: 700;
   font-size: 28px;
-  
-                                                
 }
 
 .about .content ul {
@@ -675,6 +746,13 @@ section {
 /*--------------------------------------------------------------
 # Services
 --------------------------------------------------------------*/
+.services-container {
+  background-color: var(--silver);
+  padding: 30px;
+  border-radius: 10px;
+}
+
+/* Service Cards */
 .services .icon-box {
   text-align: center;
   border: 1px solid #ebebeb;
@@ -727,7 +805,97 @@ section {
   border-color: #fff;
   box-shadow: 0px 0 25px 0 rgba(0, 0, 0, 0.1);
   transform: translateY(-10px);
+  background: rgb(237, 7, 7);
+  background: linear-gradient(4deg, rgba(237, 7, 7, 0.1) 13%, rgba(29, 30, 16, 0.1) 46%, rgba(125, 29, 160, 0.1) 75%);
+}
 
+/*--------------------------------------------------------------
+# Flip Card Functionality
+--------------------------------------------------------------*/
+
+/* Flip Card Container */
+.flip-card {
+  background-color: transparent;
+  width: 100%;
+  height: 300px; /* Adjust height if needed */
+  perspective: 1000px; /* Enables 3D effect */
+}
+
+/* Inner Flip Mechanism */
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+}
+
+/* Flip on Hover */
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Flip programmatically when the "flipped" class is added */
+.flip-card.flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Front and Back Card Styling */
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+}
+
+/* Front Side */
+.flip-card-front {
+  background: #fff;
+  color: black;
+  border: 1px solid #ddd;
+}
+
+/* Back Side */
+.flip-card-back {
+  background: #4b0082; /* Dark violet */
+  color: white;
+  transform: rotateY(180deg);
+  border: 1px solid #ddd;
+}
+
+/* Flip Card Text */
+.flip-card-front h4,
+.flip-card-back p {
+  text-align: center;
+  margin: 10px;
+}
+
+.flip-card-front .icon {
+  font-size: 50px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .flip-card {
+    height: 250px; /* Adjust height for smaller screens */
+  }
+
+  .flip-card-front h4 {
+    font-size: 20px;
+  }
+
+  .flip-card-back p {
+    font-size: 14px;
+    padding: 10px;
+  }
 }
 
 /*--------------------------------------------------------------
@@ -1009,8 +1177,7 @@ section {
   margin-top: 20px;
   color: #3b3b3b;
   font-size: 15px;
-  
-                                                
+  font-family: "Poppins", sans-serif;
   transition: ease-in-out 0.3s;
 }
 
@@ -1244,8 +1411,8 @@ section {
 
 .contact :is(.info,.phone,.email) i {
   font-size: 20px;
-  background: #6A0DAD;
-  color:  #C0C0C0;
+  background: #ffc451;
+  color: #151515;
   float: left;
   width: 44px;
   height: 44px;
@@ -1261,7 +1428,7 @@ section {
   font-size: 22px;
   font-weight: 600;
   margin-bottom: 5px;
-  color: rgba(255,255,255,1);
+  color: #151515;
 }
 
 
@@ -1585,19 +1752,19 @@ section {
 
 .overlay-aboutsec:hover {
   opacity: 1;
-
+  
 }
 
 
 .overlay-aboutsec {
-  opacity: 1;
+  opacity: 0;
   transition: transform 1s;
 }
 
 
 .about-hover  {
-  text-shadow: 0px 3px 3px rgba(7, 7, 7, 0.5);
-
+  text-shadow: 0px 3px 3px rgba(7, 7, 7, 0.5); 
+  
   font-size: 45px;
 }
 
@@ -1605,7 +1772,12 @@ section {
   margin: 20px;
 }
 
+.img-hover:hover {
 
+opacity: .5;
+background-color: rgba(217, 255, 0, 0.472);
+
+}
 
 
 .img-hover {
@@ -1655,11 +1827,11 @@ section {
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         text-shadow: 1px 1px 1px rgba(250, 250, 250, 0.5);
-        animation: gradientMove 5s linear infinite alternate-reverse;
+        animation: gradientMove 5s linear infinite alternate-reverse; 
 
       }
 .element-txt-shad {
-    color: #C0C0C0; /* Text color */
+    color: white; /* Text color */
     text-shadow:
         -2px -2px 0 black,   /* Top-left shadow */
         2px -2px 0 black,    /* Top-right shadow */
@@ -1672,22 +1844,39 @@ section {
         0px 0px 3px black;   /* Central blur shadow */
 }
 
-       @keyframes screenOnOff {
-            0%, 15%, 25%, 50%, 60%, 70%, 80%, 100% {
-                opacity: 0;
-                  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-                color: linear-gradient(to right top, #00e9ff, #00f6e8, #00feba, #57ff78, #b0ff00) !important;
-            }
-            6%, 11%, 21%, 26%, 31%, 41%, 51%, 56%,  66%, 71%, 76%, 81%,  91%, 96% {
-                opacity: 1;
+@keyframes techGlow {
+    0%, 100% {
+        opacity: 0.5;
+        text-shadow:
+            0 0 5px rgba(0, 255, 255, 0.8),
+            0 0 10px rgba(0, 255, 255, 0.6),
+            0 0 15px rgba(0, 255, 255, 0.4),
+            0 0 20px rgba(0, 255, 255, 0.2);
+    }
+    50% {
+        opacity: 1;
+        text-shadow:
+            0 0 10px rgba(0, 255, 255, 1),
+            0 0 20px rgba(0, 255, 255, 0.8),
+            0 0 30px rgba(0, 255, 255, 0.6),
+            0 0 40px rgba(0, 255, 255, 0.4);
+    }
+}
 
-            }
-        }
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.08);
+    }
+}
 
 .flashing-effect {
- animation: screenOnOff 15s infinite;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-
+    color: #00ffff; /* Neon cyan color */
+    animation: techGlow 2s infinite alternate, pulse 1.5s infinite alternate;
+    font-weight: bold;
+    text-transform: uppercase;
 }
 #navbarSupportedContentMobile ul li {
 font-size: 25px !important;
@@ -1698,15 +1887,14 @@ background: rgb(237,7,7);
 background: linear-gradient(4deg, rgba(237,7,7,1) 13%, rgba(29,30,16,1) 46%, rgba(125,29,160,1) 75%);
 }
 
-       .icon-box        {
+       .icon-box {
             position: relative;
             overflow: hidden;
             padding: 20px;
             border: 1px solid #ddd;
             border-radius: 5px;
-            color: #C0C0C0;
+
             transition: transform 0.3s ease;
-            background: rgba(0,0,0,0.5)
         }
 
         .default-content, .hover-content {
@@ -1736,7 +1924,19 @@ background: linear-gradient(4deg, rgba(237,7,7,1) 13%, rgba(29,30,16,1) 46%, rgb
             overflow-y: auto; /* Add scroll if content overflows */
         }
 
+        .icon-box:hover .default-content {
+            opacity: 0;
+            visibility: hidden;
+        }
 
+        .icon-box:hover .hover-content {
+            opacity: 1;
+            visibility: visible;
+            font-size: 18px;
+ text-shadow: 0px 3px 3px rgba(7, 7, 7, 0.5);
+ font-weight: bold;
+ text-align: left !important;
+        }
 
         @media (max-width: 767px) {
             .icon-box {
@@ -1750,150 +1950,18 @@ background: linear-gradient(4deg, rgba(237,7,7,1) 13%, rgba(29,30,16,1) 46%, rgb
             .icon-box ul {
                 padding-left: 20px; /* Adjust padding for better spacing */
             }
+
         }
 
+@media (max-width: 600px) {
 
-/* slider */
-
-/* Card Flip Effect */
-.flip-card {
-    width: 100%;
-    height: 250px; /* Larger card height */
-    perspective: 1000px;
+#navbar-brand {font-size:1rem;
+background-color: rgba(48, 25, 52, 0.1); /* Dark purple with 90% opacity */}
 }
 
-.flip-card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transition: transform 0.6s;
-    transform-style: preserve-3d;
-}
-
-.flip-card:hover .flip-card-inner {
-    transform: rotateY(180deg);
-}
-
-.flip-card-front, .flip-card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    border-radius: 10px;
-    color: #fff;
-    font-size: 18px;
-    text-align: center;
-}
-
-/* Front and Back Styling */
-.flip-card-front {
-    background: rgba(0, 123, 255, 0.8); /* Translucent primary color */
-    border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.flip-card-back {
-    background: rgba(51, 51, 51, 0.99); /* Darker translucent background */
-    transform: rotateY(180deg);
-}
-
-/* Icon styling */
-.icon {
-    font-size: 40px;
-    margin-bottom: 10px;
-    color: #fff;
-}
-
-
-.flip-card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transition: transform 0.6s;
-    transform-style: preserve-3d;
-}
-
-.flip-card:hover .flip-card-inner {
-    transform: rotateY(180deg);
-}
-
-.flip-card-front, .flip-card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
-    color: #fff;
-    font-size: 16px;
-    text-align: center;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.flip-card-front {
-    background: rgba(0,0,0,0.2);
-}
-
-.flip-card-back {
-    background: rgba(0,0,0,0.2);
-    transform: rotateY(180deg);
-}
-
-/* Slider and Arrows */
-.card-slider {
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px 0;
-}
-
-.cards-container {
-    display: flex;
-    transition: transform 0.5s ease;
-}
-
-.arrow {
-    position: absolute;
-    font-size: 2em;
-    cursor: pointer;
-    user-select: none;
-    color: #4a90e2;
-    padding: 10px;
-    background: #fff;
-    border-radius: 50%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 2;
-}
-
-.arrow-left {
-    left: 10px;
-}
-
-.arrow-right {
-    right: 10px;
-}
-
-
-.text-outline-white {
-  color: black; /* Inside fill color */
-  text-shadow:
-    .5px .5px 0 white, /* Outline: right-bottom */
-    -.5px .5px 0 white, /* Outline: left-bottom */
-    .5px -.5px 0 white, /* Outline: right-top */
-    -.5px -.5px 0 white; /* Outline: left-top */
-  font-weight: bold; /* Optional: for better visibility */
+.about-services-bg {
+  background-image: url('../img/bg-hero/blurry-gradient-haikei.png');
+  background-position: 100%;
+  background-size: cover;
+  background-repeat: repeat;
 }
