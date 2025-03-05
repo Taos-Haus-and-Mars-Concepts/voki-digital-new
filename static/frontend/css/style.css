@@ -1435,7 +1435,7 @@ section {
 
 .contact :is(.info,.phone,.email) i {
   font-size: 20px;
-  background: #ffc451;
+  background-color: var(--cyan);
   color: #151515;
   float: left;
   width: 44px;
@@ -1449,10 +1449,10 @@ section {
 
 .contact :is(.info,.phone,.email) h4 {
   padding: 0 0 0 60px;
-  font-size: 22px;
+  font-size: 16px;
   font-weight: 600;
   margin-bottom: 5px;
-  color: #151515;
+  color: #fff;
 }
 
 
@@ -1552,6 +1552,27 @@ section {
 
 .contact .php-email-form button[type=submit]:hover {
   background: #ffcd6b;
+}
+
+.contact-title {
+  color: white;
+}
+
+.contact-title-2 {
+  color: white;
+}
+
+.contact-container {
+  padding: 30px 20px;
+  transition: ease-in-out 0.3s;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  height: 100%;
+  text-align: left;
+  background-color: rgba(75, 0, 130, 0.1);
+  /* background-image: url(http://www.transparenttextures.com/patterns/bo-play.png); */
+  /* background-image: url("https://www.transparenttextures.com/patterns/carbon-fibre.png"); */
+  background-image: url(http://www.transparenttextures.com/patterns/dotnoise-light-grey.png);
+  border-radius: 10px;
 }
 
 @keyframes animate-loading {
