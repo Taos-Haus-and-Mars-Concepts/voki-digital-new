@@ -5,6 +5,83 @@
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
 */
+
+console.log("main.js is loaded and running!");
+
+// 1. Select all hero icon-boxes that have data-service
+const heroBoxes = document.querySelectorAll('.icon-box[data-service]');
+
+// Let's log out how many we found
+console.log("Found heroBoxes:", heroBoxes);
+console.log("Number of heroBoxes found:", heroBoxes.length);
+
+// 2. A helper to scroll to #services smoothly
+function scrollToServices() {
+  const header = document.querySelector('#header');
+  console.log("Header found?", header);
+  const offset = header ? header.offsetHeight : 0;
+  console.log("Header offset is:", offset);
+
+  const servicesSection = document.querySelector('#services');
+  console.log("Services section found?", servicesSection);
+
+  // If we didn't find #services, return early
+  if (!servicesSection) {
+    console.warn("No #services section found. Exiting scrollToServices.");
+    return;
+  }
+
+  const elementPos = servicesSection.offsetTop;
+  console.log("Scrolling to Y-position:", elementPos - offset);
+
+  window.scrollTo({
+    top: elementPos - offset,
+    behavior: 'smooth'
+  });
+}
+
+// 3. Add click listeners for hero boxes
+heroBoxes.forEach(box => {
+  box.addEventListener('click', () => {
+    console.log("Hero box clicked:", box);
+
+    // Grab the matching service name from data-service
+    const serviceName = box.getAttribute('data-service');
+    console.log("Service name is:", serviceName);
+
+    // Scroll to #services
+    console.log("Scrolling to #services now...");
+    scrollToServices();
+
+    // After a short delay, flip the correct card
+    setTimeout(() => {
+      const targetCard = document.querySelector(`.flip-card[data-service-target="${serviceName}"]`);
+      if (targetCard) {
+        console.log("Found target card:", targetCard);
+        // Add the .flipped class so it rotates
+        targetCard.classList.add('flipped');
+        console.log("Added .flipped class to target card.");
+      } else {
+        console.warn(`No .flip-card found with data-service-target="${serviceName}"`);
+      }
+    }, 600); // Adjust timeout if needed
+  });
+});
+
+// 4. Let users flip cards directly while on Services
+const flipCards = document.querySelectorAll('.flip-card');
+console.log("Found flip cards:", flipCards);
+
+flipCards.forEach(card => {
+  card.addEventListener('click', () => {
+    console.log("Services card clicked:", card);
+    // Toggle .flipped so it flips/unflips on each click
+    card.classList.toggle('flipped');
+    console.log("Toggled .flipped class on this card");
+  });
+});
+
+
 (function() {
   "use strict";
 
@@ -359,3 +436,6 @@ document.querySelector('.arrow-right').addEventListener('click', () => {
         cardSlider.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
     }
 });
+
+
+
