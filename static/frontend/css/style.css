@@ -1786,3 +1786,9 @@ background-color: rgba(217, 255, 0, 0.472);
   background-size: cover;
   background-repeat: no-repeat;
 }
+
+@media only screen and (max-width: 768px) {
+  .about-services-bg {
+    background-position: 70%;
+  }
+}
