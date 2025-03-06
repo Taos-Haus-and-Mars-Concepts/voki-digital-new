@@ -203,7 +203,7 @@
   <script src='{% static "frontend/vendor/aos/aos.js" %}'></script>
   <script src='{% static "frontend/vendor/bootstrap/js/bootstrap.bundle.min.js"  %}'></script>
   <!-- Bootstrap Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src='{% static "frontend/vendor/glightbox/js/glightbox.min.js"  %}'></script>
   <script src='{% static "frontend/vendor/isotope-layout/isotope.pkgd.min.js"  %}'></script>
   <script src='{% static "frontend/vendor/swiper/swiper-bundle.min.js"  %}'></script>
@@ -211,65 +211,7 @@
   <!-- Template Main JS File -->
   <script src='{% static "frontend/js/main.js" %}'></script>
   <script src="{% static 'frontend/js/htmx.min.js' %}" defer></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-
-<!-- 
-<script>
-
-var lastScrollTop;
-navbar = document.getElementById('navbar');
-window.addEventListener('scroll',function(){
-var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-if(scrollTop > lastScrollTop){
-navbar.style.top='-80px';
-}
-else{
-navbar.style.top='0';
-}
-lastScrollTop = scrollTop;
-});
-</script>
-  -->
-<script type="text/javascript">
-
-      $(document).ready(function() {
-        var lastScrollTop = 0;
-        $(window).scroll(function(event) {
-            var st = $(this).scrollTop();
-            if (st > lastScrollTop) {
-                // Downscroll code
-                $('.navbar-hide-on-scroll').removeClass('scroll-show').addClass('scroll-hide');
-            } else {
-                // Upscroll code
-                $('.navbar-hide-on-scroll').removeClass('scroll-hide').addClass('scroll-show');
-            }
-            lastScrollTop = st;
-        });
-
-        $('#mobile-navbar-toggler').click(function() {
-            $('#navbarSupportedContentMobile').toggleClass('show');
-        });
-
-        $('.mobile-nav .navbar-nav a').click(function() {
-    $('#navbarSupportedContentMobile').removeClass('show');
-});
-
-$('.desktop-nav .navbar-nav a').click(function() {
-    $('#navbarSupportedContentDesktop').removeClass('show');
-});
-
-
-               $(document).ready(function(){
-            $('.icon-box').hover(function(){
-                $(this).find('.default-content').css('opacity', '0');
-                $(this).find('.hover-content').css('opacity', '1');
-            }, function(){
-                $(this).find('.default-content').css('opacity', '1');
-                $(this).find('.hover-content').css('opacity', '0');
-            });
-        });
-</script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </body>
