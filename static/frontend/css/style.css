@@ -1719,8 +1719,10 @@ section {
 
 #footer .footer-top .footer-links {
   margin-bottom: 30px;
+  text-align: center; /* You mentioned liking centered text */
 }
 
+/* Default .footer-links list styling */
 #footer .footer-top .footer-links ul {
   list-style: none;
   padding: 0;
@@ -1729,8 +1731,8 @@ section {
 
 #footer .footer-top .footer-links ul i {
   padding-right: 2px;
-  color: #ffc451;
-  font-size: 18px;
+  color: var(--cyan);
+  font-size: 14px;
   line-height: 1;
 }
 
@@ -1741,6 +1743,9 @@ section {
 }
 
 #footer .footer-top .footer-links ul li:first-child {
+  /* This zeroes out top padding for the first item, 
+     but can cause the "first link floating up" if 
+     .client-sites also uses it. We'll override it below. */
   padding-top: 0;
 }
 
@@ -1748,7 +1753,7 @@ section {
   color: #fff;
   transition: 0.3s;
   display: inline-block;
-  line-height: 1;
+  line-height: 1; /* This forces line-height=1 in .footer-links, which we'll override for .client-sites */
 }
 
 #footer .footer-top .footer-links ul a:hover {
@@ -1798,6 +1803,66 @@ section {
   text-align: center;
   font-size: 13px;
   color: #fff;
+}
+
+/*--------------------------------------------------------------
+# .client-sites Specific Rules
+--------------------------------------------------------------*/
+.client-sites {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 20px 0 0;
+  flex-wrap: wrap;
+}
+
+.client-sites li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px; /* ensures consistent space between icon and link */
+  margin: 0;
+  padding: 0; /* We'll rely on the gap for spacing instead of .footer-links' 10px 0 */
+}
+
+.client-sites i {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  font-size: 14px; /* adjust if necessary */
+  color: #f1c40f; /* optional: make the chevron pop */
+}
+
+.client-sites a {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  text-decoration: underline;
+}
+
+/* Fix the first-child + line-height conflict 
+   by overriding .footer-links rules specifically 
+   for .client-sites inside .footer-links */
+.footer-links ul.client-sites li {
+  padding: 0 !important;              /* Override the 10px 0 */
+}
+.footer-links ul.client-sites li:first-child {
+  padding-top: 0 !important;          /* Override the zeroed top padding for the first item */
+}
+.footer-links ul.client-sites a {
+  line-height: normal !important;     /* Restore a normal line-height instead of forced 1 */
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .client-sites {
+    flex-direction: column; /* stack vertically */
+    gap: 10px; /* tighter spacing on mobile */
+  }
 }
 
 .text-font-change {
