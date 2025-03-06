@@ -688,6 +688,16 @@ section {
   padding-top: 30px;
 }
 
+.about-person-title {
+  padding-top: 20px;
+}
+
+.about-img {
+  width: 70%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
 /*--------------------------------------------------------------
 # Clients
 --------------------------------------------------------------*/
