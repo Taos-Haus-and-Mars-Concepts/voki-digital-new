@@ -15,32 +15,38 @@ const heroBoxes = document.querySelectorAll('.icon-box[data-service]');
 console.log("Found heroBoxes:", heroBoxes);
 console.log("Number of heroBoxes found:", heroBoxes.length);
 
-// 2. A helper to scroll to #services smoothly
-function scrollToServices() {
-  const header = document.querySelector('#header');
-  console.log("Header found?", header);
-  const offset = header ? header.offsetHeight : 0;
-  console.log("Header offset is:", offset);
-
-  const servicesSection = document.querySelector('#services');
-  console.log("Services section found?", servicesSection);
-
-  // If we didn't find #services, return early
-  if (!servicesSection) {
-    console.warn("No #services section found. Exiting scrollToServices.");
+// A function to scroll to a particular flip-card in Services
+function scrollToCardAndFlip(serviceName) {
+  const targetCard = document.querySelector(`.flip-card[data-service-target="${serviceName}"]`);
+  if (!targetCard) {
+    console.warn(`No .flip-card found with data-service-target="${serviceName}"`);
     return;
   }
 
-  const elementPos = servicesSection.offsetTop;
-  console.log("Scrolling to Y-position:", elementPos - offset);
+  // Calculate the card's position relative to the whole document
+  const cardRect = targetCard.getBoundingClientRect();
+  const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+  
+  // Set how far above the card we want to land
+  const offset = 100; // Adjust as needed
+  const cardPosition = cardRect.top + scrollY - offset;
 
+  console.log(`Scrolling to card position: ${cardPosition}`);
+
+  // Smooth-scroll the window to the card
   window.scrollTo({
-    top: elementPos - offset,
+    top: cardPosition,
     behavior: 'smooth'
   });
+
+  // Add the flipped class after scrolling finishes
+  setTimeout(() => {
+    targetCard.classList.add('flipped');
+    console.log(`Added .flipped class to target card: ${serviceName}`);
+  }, 600); // Adjust timing as needed
 }
 
-// 3. Add click listeners for hero boxes
+// 2. Add click listeners on hero boxes
 heroBoxes.forEach(box => {
   box.addEventListener('click', () => {
     console.log("Hero box clicked:", box);
@@ -49,26 +55,12 @@ heroBoxes.forEach(box => {
     const serviceName = box.getAttribute('data-service');
     console.log("Service name is:", serviceName);
 
-    // Scroll to #services
-    console.log("Scrolling to #services now...");
-    scrollToServices();
-
-    // After a short delay, flip the correct card
-    setTimeout(() => {
-      const targetCard = document.querySelector(`.flip-card[data-service-target="${serviceName}"]`);
-      if (targetCard) {
-        console.log("Found target card:", targetCard);
-        // Add the .flipped class so it rotates
-        targetCard.classList.add('flipped');
-        console.log("Added .flipped class to target card.");
-      } else {
-        console.warn(`No .flip-card found with data-service-target="${serviceName}"`);
-      }
-    }, 600); // Adjust timeout if needed
+    // Scroll directly to the card and flip it
+    scrollToCardAndFlip(serviceName);
   });
 });
 
-// 4. Let users flip cards directly while on Services
+// 3. Let users flip cards directly while on Services
 const flipCards = document.querySelectorAll('.flip-card');
 console.log("Found flip cards:", flipCards);
 
