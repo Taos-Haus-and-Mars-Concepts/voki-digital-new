@@ -21,7 +21,7 @@ SECRET_KEY = str(os.getenv('APP_SECRET_KEY'))
 
 # Default settings; these will be overridden below based on the environment
 DEBUG = True
-DJANGO_ALLOWED_HOSTS = ['.herokuapp.com', 'vokidigital.com', '127.0.0.1']
+DJANGO_ALLOWED_HOSTS = ['.herokuapp.com', '.vokidigital.com', '127.0.0.1']
 ALLOWED_HOSTS = DJANGO_ALLOWED_HOSTS
 
 # -------------------------------
