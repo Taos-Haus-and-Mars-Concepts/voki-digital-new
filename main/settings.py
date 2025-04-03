@@ -5,31 +5,49 @@ import sys
 import dj_database_url
 from django.contrib.messages import constants as messages
 
-
+# Set the environment (defaulting to "development")
 ENVIRONMENT = str(os.getenv('ENVIRONMENT', 'development'))
 
+# Load .env file for development and staging environments
 if ENVIRONMENT in ['development', 'staging']:
-    from dotenv import load_dotenv
     dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
     load_dotenv(dotenv_path)
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+# Define BASE_DIR using pathlib
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Set the secret key from environment variables
 SECRET_KEY = str(os.getenv('APP_SECRET_KEY'))
 
+# Default settings; these will be overridden below based on the environment
 DEBUG = True
+DJANGO_ALLOWED_HOSTS = ['.herokuapp.com', 'vokidigital.com', '127.0.0.1']
+ALLOWED_HOSTS = DJANGO_ALLOWED_HOSTS
 
-# DJANGO_ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS")
-DJANGO_ALLOWED_HOSTS = ['.herokuapp.com', 'taos-haus.com', '.taostechsolutions.com', '127.0.0.1']
-ALLOWED_HOSTS = ['.herokuapp.com', 'taos-haus.com', '.taostechsolutions.com', '127.0.0.1']
-
-DEVELOPMENT_MODE = False
+# -------------------------------
+# Conditional Settings by Environment
+# -------------------------------
 
 if ENVIRONMENT == 'production':
-    ADMINS = []
+    DEBUG = False
+    # Update allowed hosts for production
+    ALLOWED_HOSTS = ['.herokuapp.com', 'vokidigital.com']
+
+    # Use the production database URL and configure the database with dj_database_url
+    DATABASE_URL = str(os.getenv('DATABASE_URL'))
+    DATABASES = {
+        'default': dj_database_url.config(
+            default=DATABASE_URL,
+            conn_max_age=600,
+            conn_health_checks=True,
+        )
+    }
+    # Enforce SSL/TLS on the database connection
+    DATABASES['default']['OPTIONS'] = {
+        'sslmode': 'require',
+    }
+
+    # Security settings for production
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
@@ -39,10 +57,54 @@ if ENVIRONMENT == 'production':
     SECURE_CONTENT_TYPE_NOSNIFF = True
     SECURE_BROWSER_XSS_FILTER = True
     X_FRAME_OPTIONS = 'DENY'
-    SECURE_SSL_REDIRECT = not DEBUG
-# Application definition
+    SECURE_SSL_REDIRECT = True
 
-SECURE_HSTS_SECONDS = 100000
+elif ENVIRONMENT == 'staging':
+    DEBUG = True
+    # Update allowed hosts for staging
+    ALLOWED_HOSTS = ['.herokuapp.com', 'vokidigital.com']
+
+    # Use the development (or staging) database URL
+    DATABASE_URL = str(os.getenv('DEV_DATABASE_URL'))
+    DATABASES = {
+        'default': dj_database_url.config(
+            default=DATABASE_URL,
+            conn_max_age=600,
+            conn_health_checks=True,
+        )
+    }
+    DATABASES['default']['OPTIONS'] = {
+        'sslmode': 'require',
+    }
+
+    # Staging security settings (less strict than production)
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    SESSION_COOKIE_SECURE = False
+    CSRF_COOKIE_SECURE = False
+    SECURE_HSTS_SECONDS = 3600
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
+    SECURE_CONTENT_TYPE_NOSNIFF = True
+    SECURE_BROWSER_XSS_FILTER = True
+    SECURE_SSL_REDIRECT = True
+
+else:
+    # Development settings
+    DEBUG = True
+    ALLOWED_HOSTS = ['*']
+
+    # Use a local SQLite database for development
+    DATABASE_URL = str(os.getenv('DATABASE_URL'))
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+        }
+    }
+
+# -------------------------------
+# Application Definition (Shared Across Environments)
+# -------------------------------
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -55,7 +117,6 @@ INSTALLED_APPS = [
     'phonenumber_field',
     'django_htmx',
     'django_ajax',
-
 ]
 
 MIDDLEWARE = [
@@ -72,14 +133,9 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'main.urls'
 
-
-
-# Define the template directories for each app
+# Define app-specific template directories
 APP_TEMPLATE_DIRS = [
-    os.path.join(BASE_DIR, 'djapp', 'templates'),
     os.path.join(BASE_DIR, 'frontend', 'templates'),
-
-    # Add more app-specific template directories as needed
 ]
 
 TEMPLATES = [
@@ -100,7 +156,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'main.wsgi.application'
 
-#messages
+# Message tags for Django messages framework
 MESSAGE_TAGS = {
     messages.DEBUG: 'alert-secondary',
     messages.INFO: 'alert-info',
@@ -109,34 +165,7 @@ MESSAGE_TAGS = {
     messages.ERROR: 'alert-danger',
 }
 
-if ENVIRONMENT == 'production':
-    DATABASE_URL = str(os.getenv('DATABASE_URL'))
-
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': str(os.getenv('DB_NAME')),
-            'USER': str(os.getenv('DB_USER')),
-            'PASSWORD': str(os.getenv('DB_PASSWORD')),
-            'HOST': str(os.getenv('DB_HOST')),
-            'PORT': os.getenv('DB_PORT'),
-        },
-    }
-
-    DATABASES['default'] = dj_database_url.config(
-        default=str(os.getenv('DATABASE_URL')),
-        conn_max_age=600,
-        conn_health_checks=True,
-    )
-else:
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.sqlite3",
-            "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
-        }
-    }
-
-
+# Password validators
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -152,22 +181,16 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
-
+# Localization and timezone settings
 LANGUAGE_CODE = 'en-us'
 PHONENUMBER_DEFAULT_REGION = 'US'
-
 TIME_ZONE = 'America/New_York'
-
 USE_I18N = True
-
 USE_TZ = True
-
 DATETIME_FORMAT = "m-d-Y || H:i"
 USE_L10N = False
 
-
-
+# Static files settings
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATICFILES_DIRS = [
@@ -176,7 +199,7 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# SMTP SETTINGS
+# SMTP email settings (shared across environments)
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_USE_TLS = True
 EMAIL_HOST = "smtp.gmail.com"
