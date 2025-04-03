@@ -19,10 +19,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Set the secret key from environment variables
 SECRET_KEY = str(os.getenv('APP_SECRET_KEY'))
 
-# Default settings; these will be overridden below based on the environment
-DEBUG = True
-DJANGO_ALLOWED_HOSTS = ['.herokuapp.com', '.vokidigital.com', '127.0.0.1']
-ALLOWED_HOSTS = DJANGO_ALLOWED_HOSTS
 
 # -------------------------------
 # Conditional Settings by Environment
@@ -31,7 +27,7 @@ ALLOWED_HOSTS = DJANGO_ALLOWED_HOSTS
 if ENVIRONMENT == 'production':
     DEBUG = False
     # Update allowed hosts for production
-    ALLOWED_HOSTS = ['.herokuapp.com', 'vokidigital.com']
+    ALLOWED_HOSTS = ['.herokuapp.com', '.vokidigital.com']
 
     # Use the production database URL and configure the database with dj_database_url
     DATABASE_URL = str(os.getenv('DATABASE_URL'))
@@ -59,10 +55,16 @@ if ENVIRONMENT == 'production':
     X_FRAME_OPTIONS = 'DENY'
     SECURE_SSL_REDIRECT = True
 
+    CORS_ALLOWED_ORIGINS = [
+        'https://vokidigital.com',
+        'https://www.vokidigital.com',
+
+    ]
+
 elif ENVIRONMENT == 'staging':
     DEBUG = True
     # Update allowed hosts for staging
-    ALLOWED_HOSTS = ['.herokuapp.com', 'vokidigital.com']
+    ALLOWED_HOSTS = ['.herokuapp.com']
 
     # Use the development (or staging) database URL
     DATABASE_URL = str(os.getenv('DEV_DATABASE_URL'))
