@@ -480,12 +480,20 @@ section {
 
 .about-person-title {
   padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+@media (min-width: 400px) and (max-width: 1024px) {
+  .about-person-title {
+    margin-bottom: 20px;
+  }
 }
 
 .about-img {
-  width: 70%;
+  width: 60%;
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: 10px !important;
+  border: 1px solid #fff
 }
 
 /*--------------------------------------------------------------
