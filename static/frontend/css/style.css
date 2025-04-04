@@ -11,6 +11,10 @@ html, body {
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 :root {
   --indigo: #4b0082;
   --silver: #c0c0c0;
@@ -429,6 +433,26 @@ section {
 
 .nav-social-icons {
   color: var(--cyan);
+}
+
+#mobile-social {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+@media (max-width: 576px) {
+  #mobile-social {
+    justify-content: center;
+    margin-left: 13% !important;
+  }
+}
+
+@media (min-width: 577px) and (max-width: 991px) {
+  #mobile-social {
+    justify-content: flex-end;
+    margin-left: 126% !important;
+  }
 }
 
 /*--------------------------------------------------------------
