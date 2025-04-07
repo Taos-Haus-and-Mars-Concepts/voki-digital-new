@@ -11,6 +11,10 @@ html, body {
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 :root {
   --indigo: #4b0082;
   --silver: #c0c0c0;
@@ -431,6 +435,26 @@ section {
   color: var(--cyan);
 }
 
+#mobile-social {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+@media (max-width: 576px) {
+  #mobile-social {
+    justify-content: center;
+    margin-left: 13% !important;
+  }
+}
+
+@media (min-width: 577px) and (max-width: 991px) {
+  #mobile-social {
+    justify-content: flex-end;
+    margin-left: 126% !important;
+  }
+}
+
 /*--------------------------------------------------------------
 # About
 --------------------------------------------------------------*/
@@ -480,12 +504,20 @@ section {
 
 .about-person-title {
   padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+@media (min-width: 400px) and (max-width: 1024px) {
+  .about-person-title {
+    margin-bottom: 20px;
+  }
 }
 
 .about-img {
-  width: 70%;
+  width: 60%;
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: 10px !important;
+  border: 1px solid #fff
 }
 
 /*--------------------------------------------------------------
