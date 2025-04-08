@@ -5,6 +5,75 @@
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
 */
+
+console.log("main.js is loaded and running!");
+
+// 1. Select all hero icon-boxes that have data-service
+const heroBoxes = document.querySelectorAll('.icon-box[data-service]');
+
+// Let's log out how many we found
+console.log("Found heroBoxes:", heroBoxes);
+console.log("Number of heroBoxes found:", heroBoxes.length);
+
+// A function to scroll to a particular flip-card in Services
+function scrollToCardAndFlip(serviceName) {
+  const targetCard = document.querySelector(`.flip-card[data-service-target="${serviceName}"]`);
+  if (!targetCard) {
+    console.warn(`No .flip-card found with data-service-target="${serviceName}"`);
+    return;
+  }
+
+  // Calculate the card's position relative to the whole document
+  const cardRect = targetCard.getBoundingClientRect();
+  const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+  
+  // Set how far above the card we want to land
+  const offset = 100; // Adjust as needed
+  const cardPosition = cardRect.top + scrollY - offset;
+
+  console.log(`Scrolling to card position: ${cardPosition}`);
+
+  // Smooth-scroll the window to the card
+  window.scrollTo({
+    top: cardPosition,
+    behavior: 'smooth'
+  });
+
+  // Add the flipped class after scrolling finishes
+  setTimeout(() => {
+    targetCard.classList.add('flipped');
+    console.log(`Added .flipped class to target card: ${serviceName}`);
+  }, 600); // Adjust timing as needed
+}
+
+// 2. Add click listeners on hero boxes
+heroBoxes.forEach(box => {
+  box.addEventListener('click', () => {
+    console.log("Hero box clicked:", box);
+
+    // Grab the matching service name from data-service
+    const serviceName = box.getAttribute('data-service');
+    console.log("Service name is:", serviceName);
+
+    // Scroll directly to the card and flip it
+    scrollToCardAndFlip(serviceName);
+  });
+});
+
+// 3. Let users flip cards directly while on Services
+const flipCards = document.querySelectorAll('.flip-card');
+console.log("Found flip cards:", flipCards);
+
+flipCards.forEach(card => {
+  card.addEventListener('click', () => {
+    console.log("Services card clicked:", card);
+    // Toggle .flipped so it flips/unflips on each click
+    card.classList.toggle('flipped');
+    console.log("Toggled .flipped class on this card");
+  });
+});
+
+
 (function() {
   "use strict";
 
@@ -359,3 +428,6 @@ document.querySelector('.arrow-right').addEventListener('click', () => {
         cardSlider.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
     }
 });
+
+
+

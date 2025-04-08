@@ -11,11 +11,16 @@ html, body {
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 :root {
   --indigo: #4b0082;
   --silver: #c0c0c0;
   --gold: #ffd584;
   --cyan: #00ffff;
+  --pink: #ff10f0;
 
 }
 
@@ -60,6 +65,10 @@ a:hover {
 
 .email, .phone, .address {
   color: var(--silver);
+}
+
+span {
+  color: white;
 }
 
 /* i {
@@ -108,7 +117,7 @@ a:hover {
   right: 15px;
   bottom: 15px;
   z-index: 996;
-  background: #ffc451;
+  background: var(--cyan);
   width: 40px;
   height: 40px;
   border-radius: 4px;
@@ -122,11 +131,11 @@ a:hover {
 }
 
 .back-to-top:hover {
-  background: #151515;
+  background: var(--pink);
 }
 
 .back-to-top:hover i {
-  color: #ffc451;
+  color: var(--indigo);
 }
 
 .back-to-top.active {
@@ -244,227 +253,6 @@ a:hover {
 }
 
 /*--------------------------------------------------------------
-# Navigation Menu
---------------------------------------------------------------*/
-/**
-* Desktop Navigation 
-*/
-.navbar {
-  padding: 0;
-  transition: top 1s;
-}
-
-.navbar ul {
-  margin: 0;
-  padding: 0;
-  display: flex;
-  list-style: none;
-  align-items: center;
-}
-
-.navbar li {
-  position: relative;
-}
-
-.navbar a,
-.navbar a:focus {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding:0px;
-
-  font-weight: 600;
-  color: #fff;
-  white-space: nowrap;
-  transition: 0.3s;
-}
-
-.navbar a i,
-.navbar a:focus i {
-
-  line-height: 0;
-  margin-left: 5px;
-}
-
-.navbar a:hover,
-.navbar .active,
-.navbar .active:focus,
-.navbar li:hover>a {
-  color: #ffc451;
-}
-
-.navbar .dropdown ul {
-  display: block;
-  position: absolute;
-  left: 14px;
-  top: calc(100% + 30px);
-  margin: 0;
-  padding: 10px 0;
-  z-index: 99;
-  opacity: 0;
-  visibility: hidden;
-  background: #fff;
-  box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
-  transition: 0.3s;
-}
-
-.navbar .dropdown ul li {
-  min-width: 200px;
-}
-
-.navbar .dropdown ul a {
-  padding: 10px 20px;
-  font-size: 14px;
-  text-transform: none;
-  color: #151515;
-  font-weight: 400;
-}
-
-.navbar .dropdown ul a i {
-  font-size: 12px;
-}
-
-.navbar .dropdown ul a:hover,
-.navbar .dropdown ul .active:hover,
-.navbar .dropdown ul li:hover>a {
-  background-color: #ffc451;
-}
-
-.navbar .dropdown:hover>ul {
-  opacity: 1;
-  top: 100%;
-  visibility: visible;
-}
-
-.navbar .dropdown .dropdown ul {
-  top: 0;
-  left: calc(100% - 30px);
-  visibility: hidden;
-}
-
-.navbar .dropdown .dropdown:hover>ul {
-  opacity: 1;
-  top: 0;
-  left: 100%;
-  visibility: visible;
-}
-
-@media (max-width: 1366px) {
-  .navbar .dropdown .dropdown ul {
-    left: -90%;
-  }
-
-  .navbar .dropdown .dropdown:hover>ul {
-    left: -100%;
-  }
-}
-
-/**
-* Mobile Navigation 
-*/
-.mobile-nav-toggle {
-  color: #fff;
-  font-size: 28px;
-  cursor: pointer;
-  display: none;
-  line-height: 0;
-  transition: 0.5s;
-}
-
-@media (max-width: 991px) {
-  .mobile-nav-toggle {
-    display: block;
-  }
-
-
-}
-
-.navbar-mobile {
-  position: fixed;
-  overflow: hidden;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.9);
-  transition: 0.3s;
-  z-index: 999;
-}
-
-.navbar-mobile .mobile-nav-toggle {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-}
-
-.navbar-mobile ul {
-  display: block;
-  position: absolute;
-  top: 55px;
-  right: 15px;
-  bottom: 15px;
-  left: 15px;
-  padding: 10px 0;
-  background-color: #fff;
-  overflow-y: auto;
-  transition: 0.3s;
-}
-
-.navbar-mobile a, 
-.navbar-mobile a:focus {
-  padding: 10px 20px;
-  font-size: 15px;
-  color: #151515;
-}
-
-.navbar-mobile a:hover,
-.navbar-mobile .active,
-.navbar-mobile li:hover>a {
-  color: #151515;
-  background-color: #ffc451;
-}
-
-.navbar-mobile .getstarted,
-.navbar-mobile .getstarted:focus {
-  margin: 15px;
-}
-
-.navbar-mobile .dropdown ul {
-  position: static;
-  display: none;
-  margin: 10px 20px;
-  padding: 10px 0;
-  z-index: 99;
-  opacity: 1;
-  visibility: visible;
-  background: #fff;
-  box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
-}
-
-.navbar-mobile .dropdown ul li {
-  min-width: 200px;
-}
-
-.navbar-mobile .dropdown ul a {
-  padding: 10px 20px;
-  color: #151515;
-}
-
-.navbar-mobile .dropdown ul a i {
-  font-size: 12px;
-}
-
-.navbar-mobile .dropdown ul a:hover,
-.navbar-mobile .dropdown ul .active:hover,
-.navbar-mobile .dropdown ul li:hover>a {
-  background-color: #ffc451;
-}
-
-.navbar-mobile .dropdown>.dropdown-active {
-  display: block;
-}
-
-/*--------------------------------------------------------------
 # Hero Section
 --------------------------------------------------------------*/
 #hero {
@@ -519,9 +307,11 @@ a:hover {
 }
 
 #hero .icon-box {
+  cursor: pointer;
   padding: 30px 20px;
   transition: ease-in-out 0.3s;
   border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
   height: 100%;
   text-align: center;
   background-color: rgba(75, 0, 130, 0.1);
@@ -638,10 +428,46 @@ section {
 }
 
 /*--------------------------------------------------------------
+# Nav New
+--------------------------------------------------------------*/
+
+.nav-social-icons {
+  color: var(--cyan);
+}
+
+#mobile-social {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+@media (max-width: 576px) {
+  #mobile-social {
+    justify-content: center;
+    margin-left: 13% !important;
+  }
+}
+
+@media (min-width: 577px) and (max-width: 991px) {
+  #mobile-social {
+    justify-content: flex-end;
+    margin-left: 126% !important;
+  }
+}
+
+/*--------------------------------------------------------------
 # About
 --------------------------------------------------------------*/
 .about-container {
-  background-color: var(--silver);
+  padding: 30px 20px;
+  transition: ease-in-out 0.3s;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  height: 100%;
+  text-align: center;
+  background-color: rgba(75, 0, 130, 0.1);
+  /* background-image: url(http://www.transparenttextures.com/patterns/bo-play.png); */
+  /* background-image: url("https://www.transparenttextures.com/patterns/carbon-fibre.png"); */
+  background-image: url(http://www.transparenttextures.com/patterns/dotnoise-light-grey.png);
   border-radius: 10px;
 }
 
@@ -670,6 +496,28 @@ section {
 
 .about .content p:last-child {
   margin-bottom: 0;
+}
+
+#about-title {
+  padding-top: 30px;
+}
+
+.about-person-title {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+@media (min-width: 400px) and (max-width: 1024px) {
+  .about-person-title {
+    margin-bottom: 20px;
+  }
+}
+
+.about-img {
+  width: 60%;
+  object-fit: cover;
+  border-radius: 10px !important;
+  border: 1px solid #fff
 }
 
 /*--------------------------------------------------------------
@@ -747,8 +595,16 @@ section {
 # Services
 --------------------------------------------------------------*/
 .services-container {
-  background-color: var(--silver);
   padding: 30px;
+  transition: ease-in-out 0.3s;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  height: 100%;
+  text-align: center;
+  background-color: rgba(75, 0, 130, 0.1);
+  /* background-image: url(http://www.transparenttextures.com/patterns/bo-play.png); */
+  /* background-image: url("https://www.transparenttextures.com/patterns/carbon-fibre.png"); */
+  background-image: url(http://www.transparenttextures.com/patterns/dotnoise-light-grey.png);
+  /* padding: 30px; */
   border-radius: 10px;
 }
 
@@ -831,9 +687,9 @@ section {
 }
 
 /* Flip on Hover */
-.flip-card:hover .flip-card-inner {
+/* .flip-card:hover .flip-card-inner {
   transform: rotateY(180deg);
-}
+} */
 
 /* Flip programmatically when the "flipped" class is added */
 .flip-card.flipped .flip-card-inner {
@@ -843,6 +699,7 @@ section {
 /* Front and Back Card Styling */
 .flip-card-front,
 .flip-card-back {
+  cursor: pointer;
   position: absolute;
   width: 100%;
   height: 100%;
@@ -876,6 +733,39 @@ section {
 .flip-card-back p {
   text-align: center;
   margin: 10px;
+}
+
+.flip-card-back p {
+  font-size: 60%;
+}
+
+/* Mobile (up to 767px) */
+@media screen and (max-width: 767px) {
+  .flip-card-back p {
+    font-size: 60%;
+  }
+}
+
+/* Tablet (768px to 1023px) */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .flip-card-back p {
+    font-size: 70%;
+    margin: 5px;
+  }
+}
+
+/* Desktop (1024px to 1399px) */
+@media screen and (min-width: 1024px) and (max-width: 1399px) {
+  .flip-card-back p {
+    font-size: 80%;
+  }
+}
+
+/* Desktop XL (1400px and above) */
+@media screen and (min-width: 1400px) {
+  .flip-card-back p {
+    font-size: 100%;
+  }
 }
 
 .flip-card-front .icon {
@@ -1411,7 +1301,7 @@ section {
 
 .contact :is(.info,.phone,.email) i {
   font-size: 20px;
-  background: #ffc451;
+  background-color: var(--cyan);
   color: #151515;
   float: left;
   width: 44px;
@@ -1425,10 +1315,10 @@ section {
 
 .contact :is(.info,.phone,.email) h4 {
   padding: 0 0 0 60px;
-  font-size: 22px;
+  font-size: 16px;
   font-weight: 600;
   margin-bottom: 5px;
-  color: #151515;
+  color: #fff;
 }
 
 
@@ -1528,6 +1418,27 @@ section {
 
 .contact .php-email-form button[type=submit]:hover {
   background: #ffcd6b;
+}
+
+.contact-title {
+  color: white;
+}
+
+.contact-title-2 {
+  color: white;
+}
+
+.contact-container {
+  padding: 30px 20px;
+  transition: ease-in-out 0.3s;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  height: 100%;
+  text-align: left;
+  background-color: rgba(75, 0, 130, 0.1);
+  /* background-image: url(http://www.transparenttextures.com/patterns/bo-play.png); */
+  /* background-image: url("https://www.transparenttextures.com/patterns/carbon-fibre.png"); */
+  background-image: url(http://www.transparenttextures.com/patterns/dotnoise-light-grey.png);
+  border-radius: 10px;
 }
 
 @keyframes animate-loading {
@@ -1664,8 +1575,10 @@ section {
 
 #footer .footer-top .footer-links {
   margin-bottom: 30px;
+  text-align: center; /* You mentioned liking centered text */
 }
 
+/* Default .footer-links list styling */
 #footer .footer-top .footer-links ul {
   list-style: none;
   padding: 0;
@@ -1674,8 +1587,8 @@ section {
 
 #footer .footer-top .footer-links ul i {
   padding-right: 2px;
-  color: #ffc451;
-  font-size: 18px;
+  color: var(--cyan);
+  font-size: 14px;
   line-height: 1;
 }
 
@@ -1686,6 +1599,9 @@ section {
 }
 
 #footer .footer-top .footer-links ul li:first-child {
+  /* This zeroes out top padding for the first item, 
+     but can cause the "first link floating up" if 
+     .client-sites also uses it. We'll override it below. */
   padding-top: 0;
 }
 
@@ -1693,7 +1609,7 @@ section {
   color: #fff;
   transition: 0.3s;
   display: inline-block;
-  line-height: 1;
+  line-height: 1; /* This forces line-height=1 in .footer-links, which we'll override for .client-sites */
 }
 
 #footer .footer-top .footer-links ul a:hover {
@@ -1743,6 +1659,66 @@ section {
   text-align: center;
   font-size: 13px;
   color: #fff;
+}
+
+/*--------------------------------------------------------------
+# .client-sites Specific Rules
+--------------------------------------------------------------*/
+.client-sites {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 20px 0 0;
+  flex-wrap: wrap;
+}
+
+.client-sites li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px; /* ensures consistent space between icon and link */
+  margin: 0;
+  padding: 0; /* We'll rely on the gap for spacing instead of .footer-links' 10px 0 */
+}
+
+.client-sites i {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  font-size: 14px; /* adjust if necessary */
+  color: #f1c40f; /* optional: make the chevron pop */
+}
+
+.client-sites a {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  text-decoration: underline;
+}
+
+/* Fix the first-child + line-height conflict 
+   by overriding .footer-links rules specifically 
+   for .client-sites inside .footer-links */
+.footer-links ul.client-sites li {
+  padding: 0 !important;              /* Override the 10px 0 */
+}
+.footer-links ul.client-sites li:first-child {
+  padding-top: 0 !important;          /* Override the zeroed top padding for the first item */
+}
+.footer-links ul.client-sites a {
+  line-height: normal !important;     /* Restore a normal line-height instead of forced 1 */
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .client-sites {
+    flex-direction: column; /* stack vertically */
+    gap: 10px; /* tighter spacing on mobile */
+  }
 }
 
 .text-font-change {
@@ -1872,96 +1848,16 @@ background-color: rgba(217, 255, 0, 0.472);
     }
 }
 
-.flashing-effect {
-    color: #00ffff; /* Neon cyan color */
-    animation: techGlow 2s infinite alternate, pulse 1.5s infinite alternate;
-    font-weight: bold;
-    text-transform: uppercase;
-}
-#navbarSupportedContentMobile ul li {
-font-size: 25px !important;
-}
-
-#navbarSupportedContentMobile {
-background: rgb(237,7,7);
-background: linear-gradient(4deg, rgba(237,7,7,1) 13%, rgba(29,30,16,1) 46%, rgba(125,29,160,1) 75%);
-}
-
-       .icon-box {
-            position: relative;
-            overflow: hidden;
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-
-            transition: transform 0.3s ease;
-        }
-
-        .default-content, .hover-content {
-            transition: opacity 0.3s ease, visibility 0.3s ease;
-        }
-
-        .default-content {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .hover-content {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            font-size: 15px;
-            opacity: 0;
-            visibility: hidden;
-            padding: 20px; /* Ensure padding for content */
-            overflow-y: auto; /* Add scroll if content overflows */
-        }
-
-        .icon-box:hover .default-content {
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        .icon-box:hover .hover-content {
-            opacity: 1;
-            visibility: visible;
-            font-size: 18px;
- text-shadow: 0px 3px 3px rgba(7, 7, 7, 0.5);
- font-weight: bold;
- text-align: left !important;
-        }
-
-        @media (max-width: 767px) {
-            .icon-box {
-                padding: 10px;
-            }
-
-            .icon-box p, .icon-box h4, .icon-box ul li {
-                font-size: 14px; /* Adjust font size as needed */
-            }
-
-            .icon-box ul {
-                padding-left: 20px; /* Adjust padding for better spacing */
-            }
-
-        }
-
-@media (max-width: 600px) {
-
-#navbar-brand {font-size:1rem;
-background-color: rgba(48, 25, 52, 0.1); /* Dark purple with 90% opacity */}
-}
 
 .about-services-bg {
-  background-image: url('../img/bg-hero/blurry-gradient-haikei.png');
-  background-position: 100%;
+  background-image: url('../img/bg-hero/stacked-waves-haikei.png');
+  background-position: 90%;
   background-size: cover;
-  background-repeat: repeat;
+  background-repeat: no-repeat;
+}
+
+@media only screen and (max-width: 768px) {
+  .about-services-bg {
+    background-position: 70%;
+  }
 }
